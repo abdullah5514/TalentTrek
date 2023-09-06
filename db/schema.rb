@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_06_110003) do
+ActiveRecord::Schema.define(version: 2023_09_06_121931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 2023_09_06_110003) do
     t.index ["talent_id"], name: "index_courses_on_talent_id"
   end
 
+  create_table "courses_learning_paths", id: false, force: :cascade do |t|
+    t.bigint "course_id"
+    t.bigint "learning_path_id"
+    t.index ["course_id"], name: "index_courses_learning_paths_on_course_id"
+    t.index ["learning_path_id"], name: "index_courses_learning_paths_on_learning_path_id"
+  end
+
   create_table "courses_talents", id: false, force: :cascade do |t|
     t.bigint "course_id"
     t.bigint "talent_id"
@@ -55,6 +62,13 @@ ActiveRecord::Schema.define(version: 2023_09_06_110003) do
     t.date "end_date"
     t.string "title"
     t.string "status"
+  end
+
+  create_table "learning_paths_talents", id: false, force: :cascade do |t|
+    t.bigint "learning_path_id"
+    t.bigint "talent_id"
+    t.index ["learning_path_id"], name: "index_learning_paths_talents_on_learning_path_id"
+    t.index ["talent_id"], name: "index_learning_paths_talents_on_talent_id"
   end
 
   create_table "talents", force: :cascade do |t|
