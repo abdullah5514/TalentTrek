@@ -24,9 +24,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'faker'
 
-# gem 'swagger-ui-rails'
+gem 'aasm'
 
-# gem 'rswag'
 
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
