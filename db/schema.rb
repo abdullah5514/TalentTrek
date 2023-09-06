@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_05_150348) do
+ActiveRecord::Schema.define(version: 2023_09_06_094720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 2023_09_05_150348) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "speciality"
+    t.string "email"
+    t.string "phone"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -30,6 +33,8 @@ ActiveRecord::Schema.define(version: 2023_09_05_150348) do
     t.bigint "talent_id", null: false
     t.string "instructor_type"
     t.bigint "instructor_id"
+    t.string "course_code"
+    t.string "status"
     t.index ["instructor_type", "instructor_id"], name: "index_courses_on_instructor_type_and_instructor_id"
     t.index ["talent_id"], name: "index_courses_on_talent_id"
   end
@@ -45,12 +50,19 @@ ActiveRecord::Schema.define(version: 2023_09_05_150348) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "course_sequence", default: [], array: true
+    t.date "start_date"
+    t.date "end_date"
+    t.string "title"
   end
 
   create_table "talents", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "roll_no"
+    t.string "email"
+    t.string "phone"
   end
 
   add_foreign_key "courses", "talents"
