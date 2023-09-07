@@ -30,10 +30,11 @@ class TalentsController < ApplicationController
     end
   
     def destroy
-      talent = Talent.find(params[:id])
-      talent.destroy
-      head :no_content
+      talent = Talent.find_by(id: params[:id])
+      
+      talent ? (talent.destroy; render(json: { message: 'Talent deleted successfully' }, status: :ok)) : (render(json: { error: 'Talent not found' }, status: :not_found))
     end
+    
   
     private
   
