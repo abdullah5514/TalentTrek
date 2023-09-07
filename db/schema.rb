@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_06_121931) do
+ActiveRecord::Schema.define(version: 2023_09_07_080256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,24 +24,32 @@ ActiveRecord::Schema.define(version: 2023_09_06_121931) do
     t.string "phone"
   end
 
+  create_table "course_learning_path_details", force: :cascade do |t|
+    t.bigint "courses_learning_path_id", null: false
+    t.integer "course_position"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["courses_learning_path_id"], name: "index_course_learning_path_details_on_courses_learning_path_id"
+  end
+
   create_table "courses", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "talent_id", null: false
     t.string "instructor_type"
     t.bigint "instructor_id"
     t.string "course_code"
     t.string "status"
     t.index ["instructor_type", "instructor_id"], name: "index_courses_on_instructor_type_and_instructor_id"
-    t.index ["talent_id"], name: "index_courses_on_talent_id"
   end
 
-  create_table "courses_learning_paths", id: false, force: :cascade do |t|
+  create_table "courses_learning_paths", force: :cascade do |t|
     t.bigint "course_id"
     t.bigint "learning_path_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_courses_learning_paths_on_course_id"
     t.index ["learning_path_id"], name: "index_courses_learning_paths_on_learning_path_id"
   end
@@ -80,5 +88,5 @@ ActiveRecord::Schema.define(version: 2023_09_06_121931) do
     t.string "phone"
   end
 
-  add_foreign_key "courses", "talents"
+  add_foreign_key "course_learning_path_details", "courses_learning_paths"
 end

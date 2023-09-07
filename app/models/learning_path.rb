@@ -1,7 +1,11 @@
 class LearningPath < ApplicationRecord
-  has_many :courses,-> { order(:position) }
+
   has_and_belongs_to_many :talents
   has_and_belongs_to_many :courses
+
+  
+   # Validation for title
+   validates :title, presence: true
 
   include AASM
 

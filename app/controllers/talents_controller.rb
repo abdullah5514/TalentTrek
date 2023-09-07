@@ -38,7 +38,7 @@ class TalentsController < ApplicationController
     private
   
     def talent_params
-      params.require(:talent).permit(:name)
+      params.require(:talent).permit(:name, :roll_no, :email)
     end
   end
   

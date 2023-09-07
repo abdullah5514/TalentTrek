@@ -7,41 +7,81 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # db/seeds.rb
 
-require 'faker'
+
 
 # Create talents
-10.times do
-  Talent.create(
-    name: Faker::Name.unique.name
+# db/seeds.rb
+require 'faker'
 
-  )
-end
-
-# Create authors
+# Seed Authors
 5.times do
-  Author.create(
-    name: Faker::Name.unique.name
+  author = Author.create(
+    name: Faker::Name.name,
+    speciality: Faker::Lorem.word,
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.phone_number
+  )
+
+  # Create authored courses for each author
+  3.times do
+    author.authored_courses.create(
+      title: Faker::Lorem.sentence,
+      description: Faker::Lorem.paragraph,
+      instructor_type: 'Author', # Assuming all authored courses have authors as instructors
+      course_code: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 3, min_numeric: 3).upcase,
+      status: ['incomplete', 'completed'].sample
+    )
+  end
+end
+
+# Seed Talents
+5.times do
+  talent = Talent.create(
+    name: Faker::Name.name,
+    roll_no: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 3, min_numeric: 3).upcase,
+    email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.phone_number
+  )
+
+  # Create talents' courses and associate them with random learning paths
+  3.times do
+    talent.courses.create(
+      title: Faker::Lorem.sentence,
+      description: Faker::Lorem.paragraph,
+      instructor_type: 'Talent', # Assuming all talent-taught courses have talents as instructors
+      course_code: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 3, min_numeric: 3).upcase,
+      status: ['incomplete', 'completed'].sample
+    )
+  end
+
+  # Associate talents with random learning paths
+  talent.learning_paths << LearningPath.all.sample(2)
+end
+
+# Seed LearningPaths
+3.times do
+  LearningPath.create(
+    title: Faker::Lorem.sentence,
+    course_sequence: (1..10).to_a.sample(3),
+    start_date: Faker::Date.forward(days: 10),
+    end_date: Faker::Date.forward(days: 30)
   )
 end
 
-# Create courses with talents and authors associations
-author = Author.last
-talents = Talent.last
-
-20.times do
+# Seed Courses and associate them with random learning paths
+10.times do
   course = Course.create(
     title: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph,
-    author: author
+    instructor_type: ['Author', 'Talent'].sample,
+    instructor_id: (['Author', 'Talent'].sample == 'Author' ? Author.pluck(:id).sample : Talent.pluck(:id).sample),
+    course_code: Faker::Alphanumeric.alphanumeric(number: 6, min_alpha: 3, min_numeric: 3).upcase,
+    status: ['incomplete', 'completed'].sample
   )
+
+  # Associate courses with random learning paths
+  course.learning_paths << LearningPath.all.sample(2)
 end
 
-# Create learning paths with courses associations
-5.times do
-  learning_path = LearningPath.create(
-    title: Faker::Lorem.sentence
-  )
-  learning_path.courses << Course.all.sample(rand(3..7))
-end
 
 puts 'Seed data has been created.'
