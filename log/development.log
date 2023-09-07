@@ -817,3 +817,192 @@ puma (4.3.12) lib/puma/server.rb:727:in `handle_request'
 puma (4.3.12) lib/puma/server.rb:476:in `process_client'
 puma (4.3.12) lib/puma/server.rb:332:in `block in run'
 puma (4.3.12) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "riley_nienow@bashirian.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.6ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Merlene Pfeffer"], ["created_at", "2023-09-07 09:46:16.211259"], ["updated_at", "2023-09-07 09:46:16.211259"], ["speciality", "laborum"], ["email", "riley_nienow@bashirian.test"], ["phone", "(331) 178-0273"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.8ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Quibusdam dicta nemo autem."], ["description", "Qui enim nostrum. Ipsum qui quidem. Culpa nostrum consequatur."], ["created_at", "2023-09-07 09:46:16.244792"], ["updated_at", "2023-09-07 09:46:16.244792"], ["instructor_type", "Author"], ["instructor_id", 2], ["course_code", "0Q6K2D"], ["status", "incomplete"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Qui occaecati culpa eos."], ["description", "Quia facilis quasi. Inventore est harum. Doloribus voluptatem alias."], ["created_at", "2023-09-07 09:46:16.251032"], ["updated_at", "2023-09-07 09:46:16.251032"], ["instructor_type", "Author"], ["instructor_id", 2], ["course_code", "I80ZC0"], ["status", "incomplete"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Ex vitae voluptatem dolorem."], ["description", "Ea aut non. Dolorum beatae velit. Blanditiis explicabo sint."], ["created_at", "2023-09-07 09:46:16.256058"], ["updated_at", "2023-09-07 09:46:16.256058"], ["instructor_type", "Author"], ["instructor_id", 2], ["course_code", "L356JV"], ["status", "completed"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "rodrick.funk@cruickshank.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wes Bruen"], ["created_at", "2023-09-07 09:46:16.263209"], ["updated_at", "2023-09-07 09:46:16.263209"], ["speciality", "qui"], ["email", "rodrick.funk@cruickshank.test"], ["phone", "626-360-8908"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Dolorem dicta expedita ea."], ["description", "Ut facere illum. Explicabo et veritatis. Quia sint magnam."], ["created_at", "2023-09-07 09:46:16.268948"], ["updated_at", "2023-09-07 09:46:16.268948"], ["instructor_type", "Author"], ["instructor_id", 3], ["course_code", "5PK7X7"], ["status", "incomplete"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Blanditiis voluptatem commodi voluptatibus."], ["description", "Repellat omnis nihil. Minus voluptatum voluptatem. Placeat id quod."], ["created_at", "2023-09-07 09:46:16.275007"], ["updated_at", "2023-09-07 09:46:16.275007"], ["instructor_type", "Author"], ["instructor_id", 3], ["course_code", "38B2NN"], ["status", "incomplete"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Rerum cumque iusto quibusdam."], ["description", "Aut est nam. Est repellendus non. Sint rem earum."], ["created_at", "2023-09-07 09:46:16.279657"], ["updated_at", "2023-09-07 09:46:16.279657"], ["instructor_type", "Author"], ["instructor_id", 3], ["course_code", "13EBT9"], ["status", "completed"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "estela@hauck.example"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dedra Glover"], ["created_at", "2023-09-07 09:46:16.286143"], ["updated_at", "2023-09-07 09:46:16.286143"], ["speciality", "ullam"], ["email", "estela@hauck.example"], ["phone", "1-656-950-9913 x89836"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Cumque culpa nihil dignissimos."], ["description", "Commodi reprehenderit non. Soluta eos magnam. Necessitatibus blanditiis numquam."], ["created_at", "2023-09-07 09:46:16.290209"], ["updated_at", "2023-09-07 09:46:16.290209"], ["instructor_type", "Author"], ["instructor_id", 4], ["course_code", "SD12L2"], ["status", "completed"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Et ipsam quia vel."], ["description", "Possimus ad iusto. Cumque quibusdam nemo. Non nemo amet."], ["created_at", "2023-09-07 09:46:16.295874"], ["updated_at", "2023-09-07 09:46:16.295874"], ["instructor_type", "Author"], ["instructor_id", 4], ["course_code", "SIO531"], ["status", "incomplete"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Nihil autem impedit veritatis."], ["description", "Soluta autem non. Dicta impedit aut. Doloremque laboriosam praesentium."], ["created_at", "2023-09-07 09:46:16.301120"], ["updated_at", "2023-09-07 09:46:16.301120"], ["instructor_type", "Author"], ["instructor_id", 4], ["course_code", "5U9AC4"], ["status", "incomplete"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "bennett@stoltenberg.example"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Elroy Bergnaum"], ["created_at", "2023-09-07 09:46:16.308208"], ["updated_at", "2023-09-07 09:46:16.308208"], ["speciality", "non"], ["email", "bennett@stoltenberg.example"], ["phone", "(248) 861-4357 x9153"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Voluptatibus qui dolores velit."], ["description", "Fugit placeat aut. Aut earum at. Adipisci ut dignissimos."], ["created_at", "2023-09-07 09:46:16.312137"], ["updated_at", "2023-09-07 09:46:16.312137"], ["instructor_type", "Author"], ["instructor_id", 5], ["course_code", "7Y0NX4"], ["status", "completed"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Deserunt quia a nisi."], ["description", "Eligendi iste accusantium. Sed placeat ut. Aliquam modi at."], ["created_at", "2023-09-07 09:46:16.317118"], ["updated_at", "2023-09-07 09:46:16.317118"], ["instructor_type", "Author"], ["instructor_id", 5], ["course_code", "O5M8G4"], ["status", "incomplete"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Sit deleniti dolor cum."], ["description", "Eligendi provident quia. Non enim consequuntur. Minima eveniet laudantium."], ["created_at", "2023-09-07 09:46:16.324332"], ["updated_at", "2023-09-07 09:46:16.324332"], ["instructor_type", "Author"], ["instructor_id", 5], ["course_code", "T7K0D6"], ["status", "incomplete"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "elene.ledner@bins-glover.example"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Gov. Stella Miller"], ["created_at", "2023-09-07 09:46:16.332228"], ["updated_at", "2023-09-07 09:46:16.332228"], ["speciality", "qui"], ["email", "elene.ledner@bins-glover.example"], ["phone", "133.973.6672"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Est labore praesentium sit."], ["description", "Aut veniam dolorem. Voluptas quia explicabo. Saepe dolorem sunt."], ["created_at", "2023-09-07 09:46:16.337887"], ["updated_at", "2023-09-07 09:46:16.337887"], ["instructor_type", "Author"], ["instructor_id", 6], ["course_code", "5JB56E"], ["status", "incomplete"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Fuga ex non qui."], ["description", "Corrupti saepe consequatur. Rerum maxime fugiat. Facilis sit nostrum."], ["created_at", "2023-09-07 09:46:16.345829"], ["updated_at", "2023-09-07 09:46:16.345829"], ["instructor_type", "Author"], ["instructor_id", 6], ["course_code", "G6E00H"], ["status", "completed"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code", "status") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Voluptatum repellat neque autem."], ["description", "Nobis iusto iure. Dolore qui ullam. Quia error assumenda."], ["created_at", "2023-09-07 09:46:16.352699"], ["updated_at", "2023-09-07 09:46:16.352699"], ["instructor_type", "Author"], ["instructor_id", 6], ["course_code", "22T6XB"], ["status", "completed"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "dong_balistreri@stamm.example"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.5ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Albertina Crist VM"], ["created_at", "2023-09-07 09:46:16.374766"], ["updated_at", "2023-09-07 09:46:16.374766"], ["roll_no", "36E8PT"], ["email", "dong_balistreri@stamm.example"], ["phone", "(975) 561-3840"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "valentin.dietrich@bode.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.4ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Msgr. Antione Fritsch"], ["created_at", "2023-09-07 09:49:18.011408"], ["updated_at", "2023-09-07 09:49:18.011408"], ["speciality", "nobis"], ["email", "valentin.dietrich@bode.test"], ["phone", "(717) 684-6504 x34575"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "weldon@christiansen.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dong Klein"], ["created_at", "2023-09-07 09:49:18.018184"], ["updated_at", "2023-09-07 09:49:18.018184"], ["speciality", "facere"], ["email", "weldon@christiansen.test"], ["phone", "542-426-3003 x53170"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "granville@macgyver-little.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.2ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Erik D'Amore III"], ["created_at", "2023-09-07 09:49:18.024028"], ["updated_at", "2023-09-07 09:49:18.024028"], ["speciality", "dolorum"], ["email", "granville@macgyver-little.test"], ["phone", "1-315-631-8198 x238"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "debi.schiller@flatley-kunze.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.3ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Major Brekke"], ["created_at", "2023-09-07 09:49:18.046147"], ["updated_at", "2023-09-07 09:49:18.046147"], ["speciality", "iusto"], ["email", "debi.schiller@flatley-kunze.test"], ["phone", "1-114-053-1614 x525"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "authors" WHERE "authors"."email" = $1 LIMIT $2[0m  [["email", "johnette@vandervort-fritsch.test"], ["LIMIT", 1]]
+  [1m[36mAuthor Create (0.3ms)[0m  [1m[32mINSERT INTO "authors" ("name", "created_at", "updated_at", "speciality", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Gerry Parker"], ["created_at", "2023-09-07 09:49:18.053351"], ["updated_at", "2023-09-07 09:49:18.053351"], ["speciality", "sit"], ["email", "johnette@vandervort-fritsch.test"], ["phone", "(776) 790-6506 x022"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "giovanni_deckow@renner.example"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.3ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Angelia Pacocha"], ["created_at", "2023-09-07 09:49:18.069788"], ["updated_at", "2023-09-07 09:49:18.069788"], ["roll_no", "6HW7V5"], ["email", "giovanni_deckow@renner.example"], ["phone", "1-690-778-0642 x3373"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "howard_bosco@koepp.test"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.2ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Joesph Tillman VM"], ["created_at", "2023-09-07 09:49:18.075886"], ["updated_at", "2023-09-07 09:49:18.075886"], ["roll_no", "1T74DM"], ["email", "howard_bosco@koepp.test"], ["phone", "1-858-874-6003 x52946"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "candi_boyer@quigley.test"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.2ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Willard Brakus"], ["created_at", "2023-09-07 09:49:18.081629"], ["updated_at", "2023-09-07 09:49:18.081629"], ["roll_no", "X4R8N3"], ["email", "candi_boyer@quigley.test"], ["phone", "490-422-0005 x590"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "ellena@jast-dickens.example"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.3ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Wan Kunde"], ["created_at", "2023-09-07 09:49:18.087464"], ["updated_at", "2023-09-07 09:49:18.087464"], ["roll_no", "J224WM"], ["email", "ellena@jast-dickens.example"], ["phone", "891-846-2869"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "talents" WHERE "talents"."email" = $1 LIMIT $2[0m  [["email", "ted@brakus.example"], ["LIMIT", 1]]
+  [1m[36mTalent Create (0.2ms)[0m  [1m[32mINSERT INTO "talents" ("name", "created_at", "updated_at", "roll_no", "email", "phone") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ashly Schaden"], ["created_at", "2023-09-07 09:49:18.093359"], ["updated_at", "2023-09-07 09:49:18.093359"], ["roll_no", "3H5X8W"], ["email", "ted@brakus.example"], ["phone", "(623) 622-7842 x42865"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLearningPath Create (0.5ms)[0m  [1m[32mINSERT INTO "learning_paths" ("created_at", "updated_at", "course_sequence", "start_date", "end_date", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2023-09-07 09:49:18.107769"], ["updated_at", "2023-09-07 09:49:18.107769"], ["course_sequence", "{3,7,8}"], ["start_date", "2023-09-10"], ["end_date", "2023-09-12"], ["title", "Sequi quia expedita molestiae."]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLearningPath Create (0.2ms)[0m  [1m[32mINSERT INTO "learning_paths" ("created_at", "updated_at", "course_sequence", "start_date", "end_date", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2023-09-07 09:49:18.112593"], ["updated_at", "2023-09-07 09:49:18.112593"], ["course_sequence", "{5,9,6}"], ["start_date", "2023-09-17"], ["end_date", "2023-09-21"], ["title", "Dolores et qui at."]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLearningPath Create (0.3ms)[0m  [1m[32mINSERT INTO "learning_paths" ("created_at", "updated_at", "course_sequence", "start_date", "end_date", "title") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2023-09-07 09:49:18.119226"], ["updated_at", "2023-09-07 09:49:18.119226"], ["course_sequence", "{10,8,4}"], ["start_date", "2023-09-09"], ["end_date", "2023-10-03"], ["title", "Quos alias rerum voluptate."]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "authors"."id" FROM "authors"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Load (0.2ms)[0m  [1m[34mSELECT "talents".* FROM "talents" WHERE "talents"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.4ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Voluptates aspernatur animi quos."], ["description", "Pariatur placeat porro. Recusandae repudiandae accusamus. Sit aperiam facilis."], ["created_at", "2023-09-07 09:49:18.139310"], ["updated_at", "2023-09-07 09:49:18.139310"], ["instructor_type", "Talent"], ["instructor_id", 7], ["course_code", "TP2P20"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "talents"."id" FROM "talents"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Load (0.2ms)[0m  [1m[34mSELECT "talents".* FROM "talents" WHERE "talents"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Reiciendis quas ad explicabo."], ["description", "Quaerat fuga omnis. Debitis velit officiis. Pariatur quisquam iusto."], ["created_at", "2023-09-07 09:49:18.145788"], ["updated_at", "2023-09-07 09:49:18.145788"], ["instructor_type", "Talent"], ["instructor_id", 7], ["course_code", "XI7P08"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "talents"."id" FROM "talents"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Inventore ut itaque facilis."], ["description", "Aliquid repellendus voluptatibus. Non molestiae dolorem. Enim sed illum."], ["created_at", "2023-09-07 09:49:18.153324"], ["updated_at", "2023-09-07 09:49:18.153324"], ["instructor_type", "Author"], ["instructor_id", 7], ["course_code", "CI7O34"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "authors"."id" FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Veritatis est omnis rerum."], ["description", "Voluptatum rerum laboriosam. Quis et odit. Sint ad est."], ["created_at", "2023-09-07 09:49:18.159711"], ["updated_at", "2023-09-07 09:49:18.159711"], ["instructor_type", "Author"], ["instructor_id", 2], ["course_code", "98NM6T"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "talents"."id" FROM "talents"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Occaecati perspiciatis architecto voluptatem."], ["description", "Quam molestiae sed. Qui aut deserunt. Omnis dolores eum."], ["created_at", "2023-09-07 09:49:18.166464"], ["updated_at", "2023-09-07 09:49:18.166464"], ["instructor_type", "Author"], ["instructor_id", 5], ["course_code", "1H25GX"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "authors"."id" FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.2ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Ut eos nihil dolor."], ["description", "Rerum est vel. Ex cumque nostrum. Cumque autem temporibus."], ["created_at", "2023-09-07 09:49:18.173286"], ["updated_at", "2023-09-07 09:49:18.173286"], ["instructor_type", "Author"], ["instructor_id", 6], ["course_code", "5NH76D"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "talents"."id" FROM "talents"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Load (0.1ms)[0m  [1m[34mSELECT "talents".* FROM "talents" WHERE "talents"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.2ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Porro repudiandae et excepturi."], ["description", "Vel eveniet dolores. Quis suscipit distinctio. Nulla cum in."], ["created_at", "2023-09-07 09:49:18.179986"], ["updated_at", "2023-09-07 09:49:18.179986"], ["instructor_type", "Talent"], ["instructor_id", 5], ["course_code", "M8P0B0"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "authors"."id" FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Load (0.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Et placeat saepe quasi."], ["description", "Accusamus porro expedita. Rerum quia quisquam. Iure deserunt saepe."], ["created_at", "2023-09-07 09:49:18.186505"], ["updated_at", "2023-09-07 09:49:18.186505"], ["instructor_type", "Author"], ["instructor_id", 5], ["course_code", "9OL7X1"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "authors"."id" FROM "authors"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Load (0.2ms)[0m  [1m[34mSELECT "talents".* FROM "talents" WHERE "talents"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Ex consequatur qui veritatis."], ["description", "Incidunt qui aut. Quibusdam possimus architecto. Itaque est voluptatem."], ["created_at", "2023-09-07 09:49:18.194771"], ["updated_at", "2023-09-07 09:49:18.194771"], ["instructor_type", "Talent"], ["instructor_id", 6], ["course_code", "O4M0E5"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "talents"."id" FROM "talents"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTalent Load (0.2ms)[0m  [1m[34mSELECT "talents".* FROM "talents" WHERE "talents"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCourse Create (0.3ms)[0m  [1m[32mINSERT INTO "courses" ("title", "description", "created_at", "updated_at", "instructor_type", "instructor_id", "course_code") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Aperiam sed minus quos."], ["description", "Eum quam autem. Quae nobis et. Quia sint suscipit."], ["created_at", "2023-09-07 09:49:18.201918"], ["updated_at", "2023-09-07 09:49:18.201918"], ["instructor_type", "Talent"], ["instructor_id", 6], ["course_code", "6ZG45L"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8400384318424415730)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRefernceToTalentInClpt (20230907110029)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8400384318424415730)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8400384318424415730)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRefernceToTalentInClpt (20230907110029)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "course_learning_path_details" ADD "talent_id" bigint[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_course_learning_path_details_on_talent_id" ON "course_learning_path_details"  ("talent_id")[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "course_learning_path_details" ADD CONSTRAINT "fk_rails_7a29a1eb86"
+FOREIGN KEY ("talent_id")
+  REFERENCES "talents" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230907110029"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8400384318424415730)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

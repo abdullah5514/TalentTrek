@@ -1,7 +1,10 @@
 class Course < ApplicationRecord
   has_many :courses_talents
+  has_many :talents, through: :courses_talents
+  has_many :courses_learning_paths
+  has_many :learning_paths, through: :courses_learning_paths
+  
   belongs_to :instructor, polymorphic: true
-  has_and_belongs_to_many :learning_paths
 
   validates :title, presence: true
 

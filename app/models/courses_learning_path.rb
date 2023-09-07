@@ -1,3 +1,5 @@
 class CoursesLearningPath < ApplicationRecord
-    # No additional associations or validations are needed in this case
-  end
+  belongs_to :learning_path
+  belongs_to :course
+  has_many :course_learning_path_details
+end

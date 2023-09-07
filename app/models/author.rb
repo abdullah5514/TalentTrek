@@ -1,8 +1,5 @@
 class Author < ApplicationRecord
-  has_many :courses
   has_many :authored_courses, class_name: 'Course', as: :instructor
- 
-  before_destroy :transfer_courses_to_another_author
 
   validates :name, presence: true
 
@@ -12,23 +9,31 @@ class Author < ApplicationRecord
   # Validation for email presence and uniqueness
   validates :email, presence: true, uniqueness: true
   
-  def transfer_courses_to_another_author
-    if authored_courses.any?
-      another_author = Author.where(speciality: speciality).where.not(id: id)
+  before_destroy :transfer_courses_to_another_instructor
+  
+  private
 
-      another_author.any? ? assign_course_to_another_author(another_author) : assign_course_to_talent
+  def transfer_courses_to_another_instructor
+    return unless authored_courses.any?
 
-      courses.update_all(author_id: another_author.first.id)
-    else
-      puts "Author is missing"
-    end
+    another_author = Author.where(speciality: speciality).where.not(id: id)
+
+    another_author.any? ? assign_course_to_another_author(another_author) : assign_course_to_talent
   end
 
   def assign_course_to_talent
-    
+    authored_courses.each do |course|
+      completed_courses = course.courses_talents.completed
+      unless completed_courses.any?
+        talent = Talent.find(completed_courses.first.talent_id)
+        course.update(instructor_id: talent.id, instructor_type: 'Talent')
+      else
+        course.update(instructor_id: Author.first.id, instructor_type: 'Author')
+      end
+    end
   end
 
   def assign_course_to_another_author(author)
-    authored_courses.update_all(instructor: author.first)
+    authored_courses.update_all(instructor_id: author.first.id, instructor_type: 'Author')
   end
 end

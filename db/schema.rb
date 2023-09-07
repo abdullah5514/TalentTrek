@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_07_102729) do
+ActiveRecord::Schema.define(version: 2023_09_07_152234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,12 @@ ActiveRecord::Schema.define(version: 2023_09_07_102729) do
   create_table "course_learning_path_details", force: :cascade do |t|
     t.bigint "courses_learning_path_id", null: false
     t.integer "course_position"
-    t.string "state"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "talent_id"
     t.index ["courses_learning_path_id"], name: "index_course_learning_path_details_on_courses_learning_path_id"
+    t.index ["talent_id"], name: "index_course_learning_path_details_on_talent_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -66,7 +68,6 @@ ActiveRecord::Schema.define(version: 2023_09_07_102729) do
   end
 
   create_table "learning_paths", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "start_date"
@@ -91,4 +92,5 @@ ActiveRecord::Schema.define(version: 2023_09_07_102729) do
   end
 
   add_foreign_key "course_learning_path_details", "courses_learning_paths"
+  add_foreign_key "course_learning_path_details", "talents"
 end
