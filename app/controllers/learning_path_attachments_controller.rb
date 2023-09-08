@@ -1,4 +1,4 @@
-class LearningPathAssignmentsController < ApplicationController
+class LearningPathAttachmentsController < ApplicationController
     before_action :find_learning_path, only: [:create]
     before_action :find_talent, only: [:create]
     before_action :find_assignment, only: [:destroy]
