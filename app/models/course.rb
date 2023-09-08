@@ -9,8 +9,8 @@ class Course < ApplicationRecord
   validates :title, presence: true
 
   # Validation for instructor_type
-  validates :instructor_type, presence: true
+#   validates :instructor_type, presence: true
 
   # Validation for instructor_id
-  validates :instructor_id, presence: true
+#   validates :instructor_id, presence: true
 end

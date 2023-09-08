@@ -5,5 +5,6 @@ class CoursesTalent < ApplicationRecord
   include CoursesTalents::Status
 
   # Validation for talent_id to ensure it's unique for each course
-  validates :talent_id, presence: true, uniqueness: true
+  validates :talent_id, uniqueness: { scope: :course_id }
+  # validates :talent_id, { scope: :course_id }, uniqueness: true
 end

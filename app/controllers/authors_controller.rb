@@ -30,15 +30,14 @@ class AuthorsController < ApplicationController
     end
   
     def destroy
-      author = Author.find(params[:id])
-      author.destroy
-      head :no_content
+      author = Author.find_by(params[:id])
+      author ? (author.destroy; render(json: { message: 'Author deleted successfully' }, status: :ok)) : (render(json: { error: 'Author not found' }, status: :not_found))
     end
   
     private
   
     def author_params
-      params.require(:author).permit(:name)
+      params.require(:author).permit(:name, :speciality, :email, :phone)
     end
   end
   
