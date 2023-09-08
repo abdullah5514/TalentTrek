@@ -5,16 +5,15 @@ class LearningPathAttachmentsController < ApplicationController
   
     def create
       # Assign the learning path to the talent using LearningPathsTalent
-      @assignment = LearningPathsTalent.new(learning_path: @learning_path, talent: @talent)
-  
+      @assignment = LearningPathTalent.new(learning_path: @learning_path, talent: @talent)
       if @assignment.save
-        if learning_path_has_course
-          create_course_learning_path_details
-        end
-  
         render json: { message: "Learning path assigned to talent successfully." }, status: :created
       else
         render json: { error: "Failed to assign learning path to talent." }, status: :unprocessable_entity
+      end
+  
+      if @learning_path.courses.present?
+        create_course_learning_path_details
       end
     end
   
@@ -26,29 +25,24 @@ class LearningPathAttachmentsController < ApplicationController
     private
   
     def find_learning_path
-      @learning_path = LearningPath.find(params[:learning_path_id])
+      @learning_path = LearningPath.find_by(id: params[:learning_path_id])
     end
   
     def find_talent
-      @talent = Talent.find(params[:talent_id])
+      @talent = Talent.find_by(id: params[:talent_id])
     end
   
-    def find_assignment
-      @assignment = LearningPathsTalent.find(params[:id])
-    end
-  
-    def learning_path_has_course
-      @learning_path.courses.present?
-    end
-  
+
     def create_course_learning_path_details
-      @learning_path.courses.each do |course|
+      courses_learning_paths = @learning_path.courses_learning_paths.order(:id)
+      courses_learning_paths.each_with_index do |clp, index|
         CourseLearningPathDetail.create(
-          courses_learning_path_id: course.id,
+          courses_learning_path_id: clp.id,
           talent_id: @talent.id,
-          status: 'in_progress' # You can set the initial status here
+          course_position: index + 1 # Add 1 to index to start counting from 1
         )
       end
     end
+    
   end
   
