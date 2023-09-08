@@ -67,19 +67,22 @@ ActiveRecord::Schema.define(version: 2023_09_08_094135) do
     t.index ["talent_id"], name: "index_courses_talents_on_talent_id"
   end
 
+  create_table "learning_path_talents", force: :cascade do |t|
+    t.bigint "learning_path_id"
+    t.bigint "talent_id"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["learning_path_id"], name: "index_learning_path_talents_on_learning_path_id"
+    t.index ["talent_id"], name: "index_learning_path_talents_on_talent_id"
+  end
+
   create_table "learning_paths", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "start_date"
     t.date "end_date"
     t.string "title"
-  end
-
-  create_table "learning_paths_talents", id: false, force: :cascade do |t|
-    t.bigint "learning_path_id"
-    t.bigint "talent_id"
-    t.index ["learning_path_id"], name: "index_learning_paths_talents_on_learning_path_id"
-    t.index ["talent_id"], name: "index_learning_paths_talents_on_talent_id"
   end
 
   create_table "talents", force: :cascade do |t|
