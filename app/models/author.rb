@@ -24,7 +24,7 @@ class Author < ApplicationRecord
   def assign_course_to_talent
     authored_courses.each do |course|
       completed_courses = course.courses_talents.completed
-      unless completed_courses.any?
+      if completed_courses.any?
         talent = Talent.find(completed_courses.first.talent_id)
         course.update(instructor_id: talent.id, instructor_type: 'Talent')
       else
