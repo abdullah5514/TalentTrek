@@ -1,12 +1,17 @@
 class LearningPathsController < ApplicationController
+  
     def index
       learning_paths = LearningPath.all
       render json: learning_paths
     end
   
     def show
-      learning_path = LearningPath.find(params[:id])
-      render json: learning_path
+      learning_path = LearningPath.find_by(id: params[:id])
+      if learning_path
+        render json: learning_path
+      else
+        render json: { error: 'Learning path not found' }, status: :not_found
+      end
     end
   
     def create
@@ -30,15 +35,15 @@ class LearningPathsController < ApplicationController
     end
   
     def destroy
-      learning_path = LearningPath.find(params[:id])
-      learning_path.destroy
-      head :no_content
+      learning_path = LearningPath.find_by(id: params[:id])
+
+      learning_path ? (learning_path.destroy; render(json: { message: 'Learning path deleted successfully' }, status: :ok)) : (render(json: { error: 'Learning path not found' }, status: :not_found))
     end
   
     private
   
     def learning_path_params
-      params.require(:learning_path).permit(:name)
+      params.require(:learning_path).permit(:title,:start_date, :end_date)
     end
   end
   

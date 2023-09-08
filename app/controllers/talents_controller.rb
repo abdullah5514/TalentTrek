@@ -5,8 +5,12 @@ class TalentsController < ApplicationController
     end
   
     def show
-      talent = Talent.find(params[:id])
-      render json: talent
+      talent = Talent.find_by(id: params[:id])
+      if talent
+        render json: talent
+      else
+        render json: { error: 'Talent not found' }, status: :not_found
+      end
     end
   
     def create

@@ -4,4 +4,6 @@ class LearningPath < ApplicationRecord
   has_many :courses_learning_paths
   has_many :courses, through: :courses_learning_paths
   has_many :course_learning_path_details, through: :courses_learning_paths
+
+  validates :title, presence: true
 end

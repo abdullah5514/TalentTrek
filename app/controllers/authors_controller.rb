@@ -5,8 +5,13 @@ class AuthorsController < ApplicationController
     end
   
     def show
-      author = Author.find(params[:id])
-      render json: author
+      author = Author.find_by(id: params[:id])
+
+      if author
+        render json: author
+      else
+        render json: { error: 'Author not found' }, status: :not_found
+      end
     end
   
     def create
@@ -30,7 +35,7 @@ class AuthorsController < ApplicationController
     end
   
     def destroy
-      author = Author.find_by(params[:id])
+      author = Author.find_by(id: params[:id])
       author ? (author.destroy; render(json: { message: 'Author deleted successfully' }, status: :ok)) : (render(json: { error: 'Author not found' }, status: :not_found))
     end
   

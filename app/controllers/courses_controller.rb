@@ -5,8 +5,12 @@ class CoursesController < ApplicationController
     end
   
     def show
-      course = Course.find(params[:id])
-      render json: course
+      course = Course.find_by(id: params[:id])
+      if course
+        render json: course
+      else
+        render json: { error: 'Course not found' }, status: :not_found
+      end
     end
   
     def create
