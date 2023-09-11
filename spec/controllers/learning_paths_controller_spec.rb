@@ -52,7 +52,7 @@ RSpec.describe LearningPathsController, type: :controller do
     it "returns unprocessable entity with invalid attributes" do
       learning_path = FactoryBot.create(:learning_path)
       put :update, params: { id: learning_path.id, learning_path: { title: nil } }
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:unprocessable_entity)
     end
   end
 

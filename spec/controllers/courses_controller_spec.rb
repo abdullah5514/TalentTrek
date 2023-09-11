@@ -33,7 +33,7 @@ RSpec.describe CoursesController, type: :controller do
   describe "POST #create" do
     it "creates a new course with valid attributes" do
       instructor = FactoryBot.create(:author) # Create a test instructor
-      course_params = FactoryBot.attributes_for(:course, instructor_attributes: { id: instructor.id, type: instructor.class.to_s })
+      course_params = FactoryBot.attributes_for(:course, instructor_type: instructor.class, instructor_id: instructor.id)
       post :create, params: { course: course_params }
       expect(response).to have_http_status(:created)
       expect(response.content_type).to eq('application/json; charset=utf-8')
