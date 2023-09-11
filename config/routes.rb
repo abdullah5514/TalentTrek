@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
   resources :courses do
     member do
-      get :complete_course
+      put :complete_course
     end
   end
   resources :authors
@@ -20,5 +20,4 @@ Rails.application.routes.draw do
       delete :remove_courses_from_talent
     end
   end
-  resources :learning_path_attachments, only: [:create, :destroy]
 end

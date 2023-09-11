@@ -51,15 +51,15 @@ class CoursesController < ApplicationController
 
   # Custom action to complete a course
   def complete_course
-    # TODO remove pending, use inprogress, no need for this condition then
-    # TODO load course talent with first. no need to add first here
     if params[:learning_path_id].present? && @course_talent.pending?
       render json: { message: 'Cannot complete this course as it is still in the pending stage' }, status: :ok
-    else
-      @course_talent.mark_as_completed!
+    elsif @course_talent.mark_as_completed!
       render json: { message: 'Course completed' }, status: :ok
+    else
+      render json: course.errors, status: :unprocessable_entity
     end
-     
+  rescue Exception => e
+    render json: e, status: :unprocessable_entity
   end
 
   private
@@ -76,18 +76,16 @@ class CoursesController < ApplicationController
 
   # Load course talents based on the provided parameters
   def load_courses_talent
-    # TODO use first at the end
     @course_talent = CoursesTalent.where(course_id: params[:id], talent_id: params[:talent_id]).first
     render json: { alert: 'Course not found' }, status: :not_found unless @course_talent.present?
   end
 
   # Load course talents based on the provided parameters within a learning path
   def load_learning_path_course_talent
-    # TODO use first at the end
     course_learning_path = CoursesLearningPath.where(learning_path_id: params[:learning_path_id], course_id: params[:id]).first
-    render json: { alert: 'Course not found' }, status: :not_found unless course_learning_path.present?
+    return render json: { alert: 'Course LearingPath not found' }, status: :not_found unless course_learning_path.present?
 
     @course_talent = CourseLearningPathDetail.where(courses_learning_path_id: course_learning_path.id, talent_id: params[:talent_id]).first
-    render json: { alert: 'Course not found' }, status: :not_found unless @course_talent.present?
+    render json: { alert: 'Course LearningPath detail not found' }, status: :not_found unless @course_talent.present?
   end
 end

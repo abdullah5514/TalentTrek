@@ -5,7 +5,7 @@ class Author < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :speciality, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 
   # Callback to transfer courses before destroying the author
   before_destroy :transfer_courses_to_another_instructor

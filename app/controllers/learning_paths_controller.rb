@@ -60,7 +60,7 @@ class LearningPathsController < ApplicationController
         @learning_path.courses << course
       end
     end
-    render json: { message: 'Course assigned to the learning path successfully' }, status: :ok
+    render json: { message: ['Course assigned to the learning path successfully', @course_errors.messages[:base].first] }, status: :ok
   end
 
   private
@@ -78,6 +78,9 @@ class LearningPathsController < ApplicationController
 
   # Load courses based on the provided parameters
   def load_courses
+    @course_errors = ActiveModel::Errors.new(self)
     @courses = Course.where(id: params[:courses])
+    available_courses = Course.where(id: params[:courses]).pluck(:id)
+    @course_errors.add(:base, "Course ids #{params[:courses] - available_courses} not found")
   end
 end

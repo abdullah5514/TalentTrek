@@ -16,4 +16,15 @@ class Course < ApplicationRecord
 
   # Ensure that a title is present for the course
   validates :title, presence: true
+
+  # Custom validation to check that the talent is not the same as the instructor
+  validate :same_talent_cannot_be_instructor
+
+  private
+
+  def same_talent_cannot_be_instructor
+    if instructor.is_a?(Talent) && talents.include?(instructor)
+      errors.add(:base, "A course cannot have the same talent as an instructor")
+    end
+  end
 end

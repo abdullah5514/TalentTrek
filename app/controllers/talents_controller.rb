@@ -59,7 +59,7 @@ class TalentsController < ApplicationController
         @talent.courses << course
       end
     end
-    render json: { message: 'Course assigned to the talent successfully' }, status: :ok
+    render json: { message: ['Course assigned to the talent successfully', @course_errors.messages[:base].first] }, status: :ok
   end
 
   # POST /talents/:id/remove_courses
@@ -68,7 +68,7 @@ class TalentsController < ApplicationController
     @courses.each do |course|
       @talent.courses.delete(course)
     end
-    render json: { message: 'Courses deleted successfully' }, status: :ok
+    render json: { message: ['Courses deleted successfully', @course_errors.messages[:base].first] }, status: :ok
   end
 
   # POST /talents/:id/assign_learning_path
@@ -82,7 +82,7 @@ class TalentsController < ApplicationController
       
       # Create course learning path details for the talent
       create_course_learning_path_details
-      render json: { message: "Learning path assigned to talent successfully." }, status: :ok
+      render json: { message: ["Learning path assigned to talent successfully.", @course_errors.messages[:base].first] }, status: :ok
     else
       render json: { error: "Failed to assign learning path to talent." }, status: :unprocessable_entity
     end
@@ -103,7 +103,10 @@ class TalentsController < ApplicationController
 
   # Load courses by IDs
   def load_courses
+    @course_errors = ActiveModel::Errors.new(self)
     @courses = Course.where(id: params[:courses])
+    available_courses = Course.where(id: params[:courses]).pluck(:id)
+    @course_errors.add(:base, "Course ids #{params[:courses] - available_courses} not found")
   end
 
   # Load learning path by ID

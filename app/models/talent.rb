@@ -24,5 +24,5 @@ class Talent < ApplicationRecord
   validates :roll_no, presence: true
 
   # Validation for email
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
 end
