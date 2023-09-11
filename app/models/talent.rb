@@ -6,11 +6,11 @@ class Talent < ApplicationRecord
   has_many :courses, through: :courses_talents
 
   # Define a many-to-many association with learning_paths through learning_path_talents
-  has_many :learning_path_talents
+  has_many :learning_path_talents, dependent: :destroy
   has_many :learning_paths, through: :learning_path_talents
 
   # Define a many-to-many association with course_learning_path_details
-  has_many :course_learning_path_details
+  has_many :course_learning_path_details, dependent: :destroy
 
   # Define a one-to-many association with authored_courses as an instructor
   has_many :authored_courses, class_name: 'Course', as: :instructor

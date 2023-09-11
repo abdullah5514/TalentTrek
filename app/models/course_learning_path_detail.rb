@@ -24,21 +24,19 @@ class CourseLearningPathDetail < ApplicationRecord
   # Callback after a new record is created
   after_create :change_pending_to_inprogress
 
-  # Scopes
-  scope :first_position_course, -> { where(course_position: 1)} 
-
   private
 
   # Change pending course to in-progress if no other course is in progress
   def change_pending_to_inprogress
+    course_learning_path_details = learning_paths.first.course_learning_path_details 
     # Find in-progress courses in the associated learning path
-    inprogress_courses = learning_paths.first.course_learning_path_details.inprogress
+    inprogress_courses = course_learning_path_details.inprogress
     
     # If there are in-progress courses, return without making changes
     return if inprogress_courses.any?
 
     # If no courses are in progress, find the first course in the path and mark it as in-progress
-    course = learning_paths.first.course_learning_path_details.first_position_course.first
+    course = course_learning_path_details.where(course_position: 1).first
     course.mark_as_inprogress!
   end
 end

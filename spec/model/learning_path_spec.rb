@@ -1,12 +1,10 @@
 # spec/models/learning_path_spec.rb
 
 require 'rails_helper'
-
-instructor = FactoryBot.create(:author)
-
-
-
 RSpec.describe LearningPath, type: :model do
+
+  instructor = FactoryBot.create(:author)
+  
   # Validation tests
   it "is valid with valid attributes" do
     learning_path = FactoryBot.create(:learning_path) # Use create to persist it
@@ -34,7 +32,6 @@ RSpec.describe LearningPath, type: :model do
     courses = FactoryBot.create_list(:course, 3, instructor: instructor)
 
     learning_path.courses << courses
-
     expect(learning_path.courses.count).to eq(3)
   end
 

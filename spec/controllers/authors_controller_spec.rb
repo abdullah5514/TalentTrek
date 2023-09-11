@@ -1,14 +1,15 @@
-# spec/controllers/authors_controller_spec.rb
-
 require 'rails_helper'
 
 RSpec.describe AuthorsController, type: :controller do
   describe "GET #index" do
     it "returns a JSON response with a list of authors" do
-      FactoryBot.create(:author) # Create three authors for testing
+      FactoryBot.create_list(:author, 3)
       get :index
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to eq('application/json; charset=utf-8')
+      authors = JSON.parse(response.body)
+      expect(authors).to be_an(Array)
+      expect(authors.length).to eq(3)
     end
   end
 
@@ -38,10 +39,17 @@ RSpec.describe AuthorsController, type: :controller do
     end
 
     it "returns unprocessable entity with invalid attributes" do
-      author_params = { name: nil }
+      author_params = { name: nil, speciality: nil, email: nil }
       post :create, params: { author: author_params }
+
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body).keys).to include("name")
+
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("name", "speciality", "email")
+
+      expect(error_messages["name"]).to include("can't be blank")
+      expect(error_messages["speciality"]).to include("can't be blank")
+      expect(error_messages["email"]).to include("can't be blank", "is invalid")
     end
   end
 
@@ -55,10 +63,17 @@ RSpec.describe AuthorsController, type: :controller do
     end
 
     it "returns unprocessable entity with invalid attributes" do
+      author_params = { name: nil, speciality: nil, email: nil }
       author = FactoryBot.create(:author)
-      put :update, params: { id: author.id, author: { name: nil } }
+      put :update, params: { id: author.id, author: author_params }
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body).keys).to include("name")
+
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("name", "speciality", "email")
+
+      expect(error_messages["name"]).to include("can't be blank")
+      expect(error_messages["speciality"]).to include("can't be blank")
+      expect(error_messages["email"]).to include("can't be blank", "is invalid")
     end
   end
 

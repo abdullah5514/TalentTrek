@@ -76,15 +76,13 @@ class TalentsController < ApplicationController
   def assign_learning_path_to_talent
     # Create a new LearningPathTalent association
     @learning_path_talent = LearningPathTalent.new(learning_path: @learning_path, talent: @talent)
-
     if @learning_path_talent.save
-      return unless @learning_path.courses.present?
+      return learning_path_assignment_successful unless @learning_path.courses.present?
       
       # Create course learning path details for the talent
       create_course_learning_path_details
-      render json: { message: ["Learning path assigned to talent successfully.", @course_errors.messages[:base].first] }, status: :ok
     else
-      render json: { error: "Failed to assign learning path to talent." }, status: :unprocessable_entity
+      render json: @learning_path_talent.errors.messages, status: :unprocessable_entity
     end
   end
 
@@ -121,6 +119,7 @@ class TalentsController < ApplicationController
     courses_learning_paths.each_with_index do |clp, index|
       create_course_learning_path_detail(clp, index)
     end
+    learning_path_assignment_successful
   end
 
   def create_course_learning_path_detail(clp, index)
@@ -129,5 +128,9 @@ class TalentsController < ApplicationController
       talent_id: @talent.id,
       course_position: index + 1
     )
+  end
+
+  def learning_path_assignment_successful
+    render json: { message: "Learning path assigned to talent successfully." }, status: :ok
   end
 end

@@ -48,9 +48,13 @@ class LearningPathsController < ApplicationController
   # Custom action to remove courses from a learning path
   def remove_courses_from_learning_path
     @courses.each do |course|
-      @learning_path.courses.delete(course)
+      if @learning_path.courses.include?(course)
+        destroy_referenced_records_for_courses(course)
+      else
+        @course_errors.add(:base, "Course with id:#{course.id} not included in LearningPath")
+      end
     end
-    render json: { message: 'Courses deleted successfully' }, status: :ok
+    render json: { message: [ 'Courses deleted successfully', @course_errors.messages[:base] ] }, status: :ok
   end
 
   # Custom action to assign courses to a learning path
@@ -80,7 +84,15 @@ class LearningPathsController < ApplicationController
   def load_courses
     @course_errors = ActiveModel::Errors.new(self)
     @courses = Course.where(id: params[:courses])
+    return render json: { message: 'Courses not found' }, status: :ok unless @courses.any?
+
     available_courses = Course.where(id: params[:courses]).pluck(:id)
     @course_errors.add(:base, "Course ids #{params[:courses] - available_courses} not found")
+  end
+
+  def destroy_referenced_records_for_courses(course)
+    course_learning_path = CoursesLearningPath.find_by(course_id: course.id, learning_path_id: @learning_path.id)
+    course_learning_path.course_learning_path_details.destroy_all
+    course_learning_path.destroy
   end
 end

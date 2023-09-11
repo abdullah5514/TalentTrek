@@ -31,13 +31,24 @@ RSpec.describe LearningPathsController, type: :controller do
       learning_path_params = FactoryBot.attributes_for(:learning_path)
       post :create, params: { learning_path: learning_path_params }
       expect(response.content_type).to eq('application/json; charset=utf-8')
+
+       # Parse the JSON response body
+      learning_path_response = JSON.parse(response.body)
+
+      # Add expectations to check specific attributes of the created learning path
+      expect(learning_path_response).to have_key("id")
+      expect(learning_path_response["title"]).to eq(learning_path_params[:title])
+      expect(learning_path_response["description"]).to eq(learning_path_params[:description])
     end
 
     it "returns unprocessable entity with invalid attributes" do
       learning_path_params = { title: nil }
       post :create, params: { learning_path: learning_path_params }
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body).keys).to include("title")
+
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("title")
+      expect(error_messages["title"]).to include("can't be blank")
     end
   end
 
@@ -53,6 +64,9 @@ RSpec.describe LearningPathsController, type: :controller do
       learning_path = FactoryBot.create(:learning_path)
       put :update, params: { id: learning_path.id, learning_path: { title: nil } }
       expect(response).to have_http_status(:unprocessable_entity)
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("title")
+      expect(error_messages["title"]).to include("can't be blank")
     end
   end
 

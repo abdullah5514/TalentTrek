@@ -1,5 +1,3 @@
-
-
 require 'rails_helper'
 
 RSpec.describe TalentsController, type: :controller do
@@ -39,10 +37,16 @@ RSpec.describe TalentsController, type: :controller do
     end
 
     it "returns unprocessable entity with invalid attributes" do
-      talent_params = { name: nil }
+      talent_params = { name: nil, roll_no: nil, email: nil }
       post :create, params: { talent: talent_params }
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body).keys).to include("name")
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("name", "roll_no", "email")
+
+      expect(error_messages["name"]).to include("can't be blank")
+      expect(error_messages["roll_no"]).to include("can't be blank")
+      expect(error_messages["email"]).to include("can't be blank", "is invalid")
+
     end
   end
 
@@ -57,9 +61,14 @@ RSpec.describe TalentsController, type: :controller do
 
     it "returns unprocessable entity with invalid attributes" do
       talent = FactoryBot.create(:talent)
-      put :update, params: { id: talent.id, talent: { name: nil } }
+      put :update, params: { id: talent.id, talent: { name: nil, roll_no: nil, email: nil } }
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(JSON.parse(response.body).keys).to include("name")
+      error_messages = JSON.parse(response.body)
+      expect(error_messages.keys).to include("name", "roll_no", "email")
+
+      expect(error_messages["name"]).to include("can't be blank")
+      expect(error_messages["roll_no"]).to include("can't be blank")
+      expect(error_messages["email"]).to include("can't be blank", "is invalid")      
     end
   end
 
