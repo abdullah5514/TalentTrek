@@ -14,9 +14,6 @@ module LearningPathTalents
           transitions from: :inprogress, to: :completed
         end
 
-        event :mark_as_inprogress do
-          transitions from: :completed, to: :inprogress
-        end
       end
     end
   end

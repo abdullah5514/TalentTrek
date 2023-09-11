@@ -116,11 +116,15 @@ class TalentsController < ApplicationController
   def create_course_learning_path_details
     courses_learning_paths = @learning_path.courses_learning_paths.order(:id)
     courses_learning_paths.each_with_index do |clp, index|
-      CourseLearningPathDetail.create(
-        courses_learning_path_id: clp.id,
-        talent_id: @talent.id,
-        course_position: index + 1
-      )
+      create_course_learning_path_detail(clp, index)
     end
+  end
+
+  def create_course_learning_path_detail(clp, index)
+    CourseLearningPathDetail.create(
+      courses_learning_path_id: clp.id,
+      talent_id: @talent.id,
+      course_position: index + 1
+    )
   end
 end

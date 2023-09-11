@@ -16,9 +16,6 @@ class CourseLearningPathDetail < ApplicationRecord
   # Define a many-to-many association with learning_paths through courses_learning_path
   has_many :learning_paths, through: :courses_learning_path
 
-  # Define a many-to-many association with learning_path_talents through talent
-  has_many :learning_path_talents, through: :talent
-
   # Validations
 
   # Ensure uniqueness of talent_id within the scope of courses_learning_path_id
@@ -26,6 +23,9 @@ class CourseLearningPathDetail < ApplicationRecord
 
   # Callback after a new record is created
   after_create :change_pending_to_inprogress
+
+  # Scopes
+  scope :first_position_course, -> { where(course_position: 1)} 
 
   private
 
@@ -38,7 +38,7 @@ class CourseLearningPathDetail < ApplicationRecord
     return if inprogress_courses.any?
 
     # If no courses are in progress, find the first course in the path and mark it as in-progress
-    first_position_course = learning_paths.first.course_learning_path_details.where(course_position: 1).first
-    first_position_course.mark_as_inprogress!
+    course = learning_paths.first.course_learning_path_details.first_position_course.first
+    course.mark_as_inprogress!
   end
 end

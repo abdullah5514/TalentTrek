@@ -17,6 +17,8 @@ module CoursesTalents
           transitions from: :inprogress, to: :completed
         end
 
+        # TODO we can implement additional API's for below transitions
+
         event :mark_as_dropped do
           transitions from: :inprogress, to: :dropped
         end
@@ -29,9 +31,6 @@ module CoursesTalents
           transitions from: :inprogress, to: :unavailable
         end
 
-        event :mark_as_inprogress do
-          transitions from: :completed, to: :inprogress
-        end
       end
     end
   end

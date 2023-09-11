@@ -67,7 +67,7 @@ class LearningPathsController < ApplicationController
 
   # Strong parameters for learning path creation and update
   def learning_path_params
-    params.require(:learning_path).permit(:name)
+    params.require(:learning_path).permit(:title,:start_date, :end_date)
   end
 
   # Load the learning path based on the provided ID
